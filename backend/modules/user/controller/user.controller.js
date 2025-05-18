@@ -6,7 +6,7 @@ require("dotenv").config();
 const secretJWT = process.env.JWT_SECRET;
 const pepper = "fcis26";
 const saltRounds = 10;
-let userID = 0;
+var userID = 0;
 
 const userExists = async (req, res) => { 
     const { username } = req.body;
@@ -71,5 +71,6 @@ const authUser = async (req, res) => {
     });
 }
 
+const getUserId = () => userID;
 
-module.exports = { addUser, loginUser, authUser, userID };
+module.exports = { addUser, loginUser, authUser, getUserId };
