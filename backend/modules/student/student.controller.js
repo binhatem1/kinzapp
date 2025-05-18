@@ -1,7 +1,7 @@
 const Student = require('./student.model');
 const multer = require('multer');
 const path = require('path');
-const { userID } = require('../user/controller/user.controller');
+const { getUserId } = require('../user/controller/user.controller');
 const { json } = require('stream/consumers');
 
 const allStudents = async (req, res) => {
@@ -33,6 +33,7 @@ const updateStudent = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
 const deleteStudent = async (req, res) => {
     const { id } = req.params;
     try {
@@ -62,7 +63,7 @@ const getStudent = async (req, res) => {
 
 const addStudent = async (req, res) => {
     const { name, progess, amount, email, rating } = req.body;
-        console.log(userID);
+    console.log("STUDENT" + getUserId());
     const student = new Student({
         name,
         progess,
@@ -70,7 +71,7 @@ const addStudent = async (req, res) => {
         email,
         rating,
         avatar :req.file ? req.file.filename:null,
-        mentor: userID,
+        mentor: getUserId(),
     });
     try {
         const savedStudent = await student.save();
@@ -98,6 +99,7 @@ const storage = multer.diskStorage({
 });
 const fileUploadHandler = multer({ storage: storage });
 const upload = fileUploadHandler.single("avatar");
+
 
 
 module.exports = { getStudent, addStudent, updateStudent, deleteStudent, allStudents, upload };  
