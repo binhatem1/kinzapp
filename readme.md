@@ -22,7 +22,7 @@ For optimal performance, ensure your device meets the following:
 This guide will walk you through every feature of [Your LMS Name], helping you make the most of your online learning experience. Let’s get started! 🚀
 
 2. <h2>Getting Started</h2>
-   2.1 Registration & Login
+   2.1 Registration & Login.
 
 <h3>For New Users (Registration)</h3>
 
