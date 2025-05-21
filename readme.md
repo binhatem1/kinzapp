@@ -1,93 +1,220 @@
-<h2>1. Introduction</h2>
-   <h3>Overview</h3>
-   Welcome to the [Your LMS Name] Documentation! This Learning Management System (LMS) is designed to provide a seamless online learning experience for educators, students, and administrators. Whether you're creating courses, managing enrollments, tracking progress, or engaging in interactive learning, this platform offers powerful tools to enhance education in a digital environment.
-
-<h3>Key Features</h3>
-    • Course Creation & Management – Easily build and organize courses with multimedia content.
-    • User Role Management – Assign roles (Admin, Instructor, Student) with appropriate permissions.
-    • Interactive Assessments – Create quizzes, assignments, and track grades efficiently.
-    • Communication Tools – Foster collaboration through announcements, discussions, and messaging.
-    • Analytics & Reporting – Monitor student progress and generate detailed reports.
-    • Third-Party Integrations – Supports integrations with tools like Zoom, Google Drive, and more.
-<h3>Who Should Use This Documentation?</h3>
-    • Administrators – Manage system settings, users, and permissions.
-    • Instructors – Create courses, assess students, and facilitate learning.
-    • Students – Access course materials, submit assignments, and track progress.
-    • Developers – Explore API documentation for custom integrations.
-<h3>System Requirements</h3>
-For optimal performance, ensure your device meets the following:
-    • Browser: Latest versions of Chrome, Firefox, Safari, or Edge.
-    • Internet Connection: Stable broadband recommended for video streaming.
-    • Permissions: JavaScript and cookies enabled.
-This guide will walk you through every feature of [Your LMS Name], helping you make the most of your online learning experience. Let’s get started! 🚀
-
-2. <h2>Getting Started</h2>
-   2.1 Registration & Login.
-
-<h3>For New Users (Registration)</h3>
-
-1. Visit the LMS Portal
-   o Open your browser and go to: [Your LMS Website URL].
-2. Click "Sign Up" or "Register"
-   o Choose your role: Admin, Instructor, or Student (if self-registration is enabled).
-3. Fill in Required Details
-   o Name, Email, Password, and any additional verification (if applicable).
-4. Verify Your Email (If Required)
-   o Check your inbox for a confirmation link and click it to activate your account.
-   For Existing Users (Login)
-5. Go to the Login Page
-   o Enter your Email/Username and Password.
-6. Alternative Login Methods (If Available)
-   o Single Sign-On (SSO) via Google, Microsoft, or institutional credentials.
-7. Troubleshooting Login Issues
-   o Forgot Password? Click "Reset Password" and follow the instructions.
-   o Contact support if account access issues persist.
+# 📘 **Project Overview Document**
 
 ---
 
-<h2>2.2 Dashboard Overview</h2>
-Once logged in, you’ll land on your personalized dashboard based on your role.
+## 1. 📖 Introduction
 
-Admin Dashboard
-• User Management – Add, edit, or remove users.
-• System Settings – Configure LMS preferences, security, and integrations.
-• Reports & Analytics – View system-wide data.
-Instructor Dashboard
-• My Courses – Create, edit, or manage courses.
-• Enrollments – Approve or manage student access.
-• Grading Hub – Track assignments and assessments.
-Student Dashboard
-• Enrolled Courses – Access ongoing and completed courses.
-• Assignments & Deadlines – View pending tasks and due dates.
-• Progress Tracking – Check grades and completion status.
-Navigation Guide
-• Main Menu – Located on the left/sidebar for quick access to courses, messages, and settings.
-• Search Bar – Find courses, users, or resources instantly.
-• Profile & Settings – Update personal info, notifications, and preferences.
+Welcome to the **Wallet System Documentation**!  
+The wallet system allows users to manage their financial records including incomes and expenses. The system is simple, focusing on core **CRUD operations** related to financial entries.
 
-3. User Roles & Permissions
-   Permission Summary Table:
-   Feature Admin Instructor Student
-   Create Courses ✔ ✔ ✖
-   Grade Assignments ✔ ✔ ✖
-   Enroll in Courses ✖ ✖ ✔
-   Manage User Accounts ✔ ✖ ✖
-   View All Analytics ✔ Limited Personal
+---
 
-4. Reporting & Analytics
-   • Student Progress Tracking
-   • Course Completion Reports
-   • Exporting Data (CSV, Excel)
+## 2. 🎯 Objectives
 
-5. Integrations & API
-   • Third-Party Integrations (Google Classroom, Zoom, etc.)
-   • Developer API Documentation (If applicable)
+- Provide users a platform to track their income and expenses.
+    
+- Enable secure authentication (**Sign Up** and **Sign In**).
+    
+- Maintain an organized and editable **dashboard** to view and manage financial transactions.
+    
 
-6. Troubleshooting & FAQs
-   • Common issues & solutions
-   • How to contact support
+---
 
-7. Appendix
-   • Glossary of Terms
-   • Keyboard Shortcuts (if any)
-   • Changelog (for version updates)
+## 3. 📌 Scope
+
+### ✅ In-scope:
+
+- User Authentication (**Sign Up**, **Sign In**)
+    
+- Dashboard displaying financial entries
+    
+- Add/Edit/Delete **Income and Expenses**
+    
+
+### 🚫 Out-of-scope:
+
+- **User Profile Editing** (e.g., updating password)
+    
+
+---
+
+## 4. 👥 Entities and Roles
+
+| Entity               | Role/Responsibilities                                         |
+| -------------------- | ------------------------------------------------------------- |
+| **User**             | Registers, logs in, adds/modifies/deletes income and expenses |
+| **Admin (Optional)** | Could be added later for user management                      |
+
+# 📄 **Functional Requirements Document (FRD)**
+
+---
+
+## 1️⃣ Functionality 1: User Authentication
+
+**Description:**  
+A user can register with a username, email, and password. After successful registration, the user can log in and access their dashboard.
+
+### 🔹 Steps:
+
+- **Sign Up**: Inputs – Username, Email, Password
+    
+- **Sign In**: Inputs – Email, Password
+    
+- **Authenticated sessions** are stored using JWT.
+    
+
+---
+
+## 2️⃣ Functionality 2: Income & Expense Management
+
+**Description:**  
+Users can add, update, or delete financial entries marked as income or expense.
+
+### 🔹 Features:
+
+- Add Income or Expense with:  
+    **Title**, **Amount**, **Date**, **Type (Income/Expense)**, **Category (optional)**
+    
+- Edit or Delete any existing entry
+    
+- View list of all entries on dashboard
+    
+- **Balance is dynamically calculated**
+
+
+
+## **Technical Requirements Document (TRD)**
+
+### **1. Architecture Overview**
+
+A basic web application using a client-server model.
+
+#### **Mermaid Architecture Diagram (Text Format)**
+
+graph TD
+    User -->|Sign Up / Sign In| Auth[Authentication Service]
+    User -->|CRUD Operations| API[Wallet API Server]
+    API --> DB[(Database)]
+    API --> UI[Dashboard UI]
+
+### **2. Components**
+
+- **Frontend**: HTML/CSS, Typescirpt with React
+    
+- **Backend**: Node.js with Express 
+    
+- **Database**: MongoDB
+
+### **3. Infrastructure Requirements**
+
+- **Local Development**:
+    
+    - Node.js (v14+)
+        
+    - MongoDB/PostgreSQL
+
+- **Third-party Services**:
+    
+    - bcrypt and JWT for authentication
+        
+    - dotenv for environment management
+
+### **4. Development Tools**
+
+- **IDE**: VSCode
+    
+- **Version Control**: Git & GitHub
+    
+- **Package Manager**: npm 
+    
+- **Libraries**:
+    
+    - express 
+        
+    - axios 
+        
+    - JWT and bcrypt
+
+
+## **Database Schema Documentation (Updated)**
+
+### **1. Tables / Collections**
+
+#### **Users**
+
+| Field    | Type       | Description     |
+| -------- | ---------- | --------------- |
+| id       | UUID / INT | Primary key     |
+| username | String     | Unique username |
+| password | String     | Hashed password |
+
+#### **Transactions**
+
+|Field|Type|Description|
+|---|---|---|
+|id|UUID / INT|Primary key|
+|user_id|UUID / INT|Foreign key (References Users table)|
+|name|String|Name/title of the transaction|
+|description|Text|Detailed description of the transaction|
+|amount|Decimal|Amount involved in the transaction|
+|image|String / URL|Optional image reference or file path|
+|rating|Integer|User-defined rating (e.g., 1 to 5)|
+|type|Enum|'income' or 'expense'|
+
+
+### **2. Relationships**
+
+- A `User` can have multiple `Transactions`
+    
+- Each `Transaction` is linked to a `User` through `user_id`
+    
+
+---
+
+### **3. Constraints**
+
+- `username` in Users is **unique**
+    
+- `type` in Transactions is constrained to `'income'` or `'expense'`
+    
+- `rating` should be an integer, commonly between 1 and 5 (optional range validation)
+    
+- `image` is optional (can be null or empty)
+
+
+# **API Template: Auth User**
+
+---
+
+### 📄 **Description**
+
+Authenticate user. Returns a JWT token.
+
+### 🌐 **Base URL**
+https://localhost
+
+### 🔧 **Endpoints**
+
+**POST** `/authuser`
+
+---
+
+### 📥 **Parameters**
+No parameters
+
+### 📤 **Response**
+
+Returns a JWT token.
+
+---
+
+### 📦 **Example**
+
+#### ✅ **Request**
+POST /
+
+🧾 **Response**
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwidXNlcm5hbWUiOiJqb2huX2RvZSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzE2Mjg5MjAwLCJleHAiOjE3MTYyOTI4MDB9.
+  LkMTSk6R9KjVfKkHJURW6As1AaDmgUGzjXrEuDpgoLQ"
+}
